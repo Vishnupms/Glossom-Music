@@ -1,0 +1,25 @@
+
+.input-text {
+    @apply text-white bg-transparent focus:outline-none border border-white/30 border-r-0 border-l-0 border-t-0 tracking-wide;
+    width: 75%;
+  }
+  .link-zoom:hover {
+  transform: scale(1.1);
+  transition: transform 0.2s ease-in-out;
+
+  
+}
+.artist:hover::before {
+  content: "I am an Artist";
+  top: 70%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  color: white;
+  opacity: 90%;
+  font-size: 1.7rem;
+  font-weight: bold;
+  text-align: center;
+
+}
+  
