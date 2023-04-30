@@ -1,9 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    song: null,
-    songUrl: "",
-    imageUrl: "",
+    song: []
+   
 };
 
 export const SongSlice = createSlice({
@@ -14,12 +13,7 @@ export const SongSlice = createSlice({
       state.song = action.payload.songs;
       
     },
-    setSongUrl: (state, action)  => {
-      state.songUrl = action.payload;
-    },
-    setImageUrl: (state, action)  => {
-      state.imageUrl = action.payload;
-    }
+ 
   },
 });
 

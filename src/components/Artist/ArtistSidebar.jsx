@@ -5,8 +5,8 @@ import { HiOutlineHashtag, HiOutlineHome, HiOutlineMenu, HiOutlinePhotograph, Hi
 const menus = [
     { name: 'Discover', to: '/artist', icon: HiOutlineHome },
     { name: 'Add Music', to: '/artist/addmusic', icon: HiOutlinePhotograph },
-    { name: 'Top Artists', to: '/top-artists', icon: HiOutlineUserGroup },
-    { name: 'Top Charts', to: '/top-charts', icon: HiOutlineHashtag },
+    { name: 'Followers', to: '/followers', icon: HiOutlineUserGroup },
+    { name: 'My-music', to: '/my-music', icon: HiOutlineHashtag },
   ];
 
 function ArtistSidebar() {
@@ -16,8 +16,8 @@ function ArtistSidebar() {
       <>
       <div className=" md:flex hidden gap-6"> 
         <div
-          className={`bg-[#0e0e0e] min-h-screen ${
-            open ? "w-[15rem]" : "w-16"
+          className={`bg-[#252525] min-h-screen ${
+            open ? "w-[12rem]" : "w-16"
           } duration-500 text-gray-100 px-4`}
         >
           <div className="py-3 flex justify-end">

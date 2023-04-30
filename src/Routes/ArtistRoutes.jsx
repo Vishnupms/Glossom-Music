@@ -2,8 +2,9 @@ import React from 'react'
 import { Routes, Route } from 'react-router-dom';
 import ArtistHome from "../pages/Artist/ArtistHome";
 import ArtistRegisterPage from '../pages/Artist/ArtistRegisterPage';
-import AddMusic from '../pages/Artist/AddMusic';
 import ArtistLoginPage from '../pages/Artist/ArtistLoginPage';
+import ArtistProfile from '../components/Artist/ArtistProfile';
+import AddTrack from '../components/Artist/AddTrack';
 
 function ArtistRoutes() {
   return (
@@ -11,7 +12,9 @@ function ArtistRoutes() {
         <Route path='/signup' element={<ArtistRegisterPage />} />
         <Route path='/login' element={<ArtistLoginPage />} />
         <Route path='/' element={<ArtistHome />} />
-        <Route path='/addmusic' element={<AddMusic />} />
+        <Route path='/addmusic' element={<AddTrack/>} />
+        <Route path='/profile' element={<ArtistProfile />} />
+
 
     </Routes>
   )

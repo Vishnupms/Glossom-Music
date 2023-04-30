@@ -5,39 +5,39 @@ const initialState = {
   name: null,
   token: null,
   id: null,
-  email: null,
-  pic:null
+  email:null,
+  ImgURL: null,
 };
 
-export const UserSlice = createSlice({
+export const  UserSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    setLogin: (state, action) => {
+    setUserLogin: (state, action) => {
       state.user = action.payload.user;
-      state.name = action.payload.user;
+      state.name = action.payload.name
       state.token = action.payload.token;
       state.id = action.payload.id;
       state.email = action.payload.email;
-      state.pic = action.payload.profilepic;
-
+      state.ImgURL = action.payload.ImgURL;
     },
-    setLogout: (state) => {
+    setUserLogout: (state) => {
       state.user = null;
       state.name = null;
       state.token = null;
       state.id = null;
-      state.email = null;
-      state.pic = null;
+      state.ImgURL = null;
     },
     setUserImg: (state, action) => {
-      state.pic = action.payload;
+      state.ImgURL = action.payload.ImgURL
     },
-    setUserName: (state, action) => {
+    setUserName:(state, action)=>{
       state.name = action.payload.name
-    },
+    }
   },
 });
 
+
 export const userActions = UserSlice.actions;
+
 export default UserSlice.reducer;

@@ -1,29 +1,35 @@
-import React from 'react';
-import AudioPlayer from 'react-h5-audio-player';
-import 'react-h5-audio-player/lib/styles.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { songActions } from "../../redux/Slice/SongSlice";
+/* eslint-disable jsx-a11y/media-has-caption */
+import React, { useRef, useEffect } from 'react';
 
-function Player() {
-  const { songUrl, imageUrl} = useSelector((state) => state.song)
-  const dispatch = useDispatch();
-  const handlePlayClick = () => {
-    dispatch(songActions.setSongUrl(songUrl));
+const Player = ({ activeSong, isPlaying, volume, seekTime, onEnded, onTimeUpdate, onLoadedData, repeat }) => {
+  const ref = useRef(null);
+  // eslint-disable-next-line no-unused-expressions
+  if (ref.current) {
+    if (isPlaying) {
+      ref.current.play();
+    } else {
+      ref.current.pause();
+    }
   }
+
+  useEffect(() => {
+    ref.current.volume = volume;
+  }, [volume]);
+  // updates audio element only on seekTime change (and not on each rerender):
+  useEffect(() => {
+    ref.current.currentTime = seekTime;
+  }, [seekTime]);
+
   return (
-    <div className="flex w-[100%] items-center mb-2 py-2">
-      <div className="w-40 ">
-        <img src={imageUrl } alt="songImg" className="w-32 h-20" />
-      </div>
-      <div className="w-[80%]">
-        <AudioPlayer
-          src={songUrl}
-           onClick={handlePlayClick}
-          
-        />
-      </div>
-    </div>
+    <audio
+      src={activeSong?.songURL}
+      ref={ref}
+      loop={repeat}
+      onEnded={onEnded}
+      onTimeUpdate={onTimeUpdate}
+      onLoadedData={onLoadedData}
+    />
   );
-}
+};
 
 export default Player;

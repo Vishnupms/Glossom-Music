@@ -11,23 +11,28 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { ArtistSlice } from './Slice/ArtistSlice';
-import {SongSlice} from './Slice/SongSlice';
+import {PlayerSlice} from './Slice/PlayerSlice';
 import {UserSlice} from './Slice/UserSlice';
 
 
 
+
+
 const persistConfigArtist = { key: 'artist', storage, version: 1 };
-const persistConfigSong = { key: 'song', storage, version: 1 };
+const persistConfigPlayer = { key: 'player', storage, version: 1 };
 const persistConfigUser = { key: 'user', storage, version: 1 };
 
 
 
 
 
-const ArtistPersistReducer = persistReducer(persistConfigArtist, ArtistSlice.reducer);
 
-const SongPersistReducer = persistReducer(persistConfigSong,SongSlice.reducer)
+
+const ArtistPersistReducer = persistReducer(persistConfigArtist, ArtistSlice.reducer);
+const PlayerPersistReducer = persistReducer(persistConfigPlayer,PlayerSlice.reducer)
 const UserPersistReducer = persistReducer(persistConfigUser,UserSlice.reducer)
+
+
 
 
 
@@ -35,8 +40,10 @@ export const store = configureStore({
   reducer: {
  
     artist: ArtistPersistReducer,
-    song: SongPersistReducer,
-    user: UserPersistReducer
+    player: PlayerPersistReducer,
+    user: UserPersistReducer,
+  
+   
   },
   middleware: (getDefaultMiddleware) =>
     // eslint-disable-next-line implicit-arrow-linebreak
