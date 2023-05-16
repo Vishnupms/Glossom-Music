@@ -25,6 +25,7 @@ function UserTables() {
   };
 
   const userBlock = async (id) => {
+    console.log(id,"lllllllllllllllllllllllllllllll");
     try {
       console.log(id, "id");
       const data = await blockUser(id);

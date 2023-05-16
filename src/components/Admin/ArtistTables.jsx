@@ -24,7 +24,7 @@ function ArtistTables() {
     return search === ""
       ? artist
       : artist.username.toLowerCase().includes(search) ||
-          artist.phone.includes(search);
+      artist.phone.includes(search);
   };
 
   const handleToggle = () => {
@@ -87,10 +87,15 @@ function ArtistTables() {
             </div>
 
             <div className="w-4/5 overflow-y-hidden mx-auto">
+
+              
               {data && (
                 <div className="mt-2 overflow-x-auto">
                   <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     {data.filter(searchData).map((user) => (
+                  
+
+
                       <tbody>
                         <tr className=" bg-white/5 bg-opacity-80  hover:bg-white/10">
                           <th
