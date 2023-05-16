@@ -1,26 +1,26 @@
-import React from 'react'
-import logo from '../../assets/logo.png'
-import './landing.css'
-import bg from '../../assets/bg.jpeg'
+import React from 'react';
+import logo from '../../assets/logo.png';
+import bg from '../../assets/bg.jpeg';
+import './landing.css';
 
-function LangingPage() {
+function LandingPage() {
   return (
-   <header className='py-8 bg-cover filter backdrop- bg-no-repeat bg-center bg-[url(C:\Users\Vishnu\Desktop\Glossom\client\src\assets\bg.jpeg)]'>
-    <div className='container mx-auto'>
-        <div>
-          {/* {text} */}
-          <div className='ml-20'> 
-            <h1>
-              GLOSSOM <span>MUSIC</span>
-            </h1>
-          </div>
-          <div className='flex  sm:justify-start md:justify-end lg:justify-center'        >
-            <img className='w-96 h-96' src={logo} alt=''/>
-          </div>
+    <header className='landing-header' style={{ backgroundImage: `url(${bg})` }}>
+      <div className='container'>
+        <div className='logo-container'>
+          <img src={logo} alt='Logo' className='logo' />
         </div>
-    </div>
+        <div className='text-container'>
+          <h1 className='title'>Glossom Music</h1>
+          <p className='subtitle italic'>"Feel the Glow"</p>
+        </div>
+        <div className='button-container'>
+          <button onClick={()=>navigate("/login")} className='btn btn-primary small'>Log in</button>
+          <button className='btn btn-secondary small'>Register</button>
+        </div>
+      </div>
     </header>
-  )
+  );
 }
 
-export default LangingPage
+export default LandingPage;

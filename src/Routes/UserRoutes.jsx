@@ -11,6 +11,7 @@ import TopArtist from '../components/User/TopArtist';
 import ArtistPage from '../pages/User/ArtistPage';
 import Favourites from '../pages/User/Favourites';
 import ProtectedUser from '../../ProtectedUser';
+import LandingPage from '../components/Landing Page/LangingPage';
 
 
 
@@ -20,11 +21,11 @@ const Profile = lazy(() => import("../components/User/Profile"));
 function UserRoutes() {
   return (
     <Routes>
+        <Route path='/' element={<LandingPage/>} />
         <Route path='/login' element={<LoginPage/> } />
         <Route path='/register' element={<RegisterPage/> } />
         <Route path='/register/otp' element={<Otp/>} />
-        <Route path='/' element={<ProtectedUser><HomePage/></ProtectedUser> } />
-       
+        <Route path='/home' element={<ProtectedUser><HomePage/></ProtectedUser> } />
         <Route path="/profile"element={<Suspense fallback={<div><h2>Lazy Loading</h2></div>}> <ProtectedUser> <Profile /></ProtectedUser></Suspense>}/>
         <Route path='/top-artist' element={<ProtectedUser><TopArtist /></ProtectedUser>} />
         <Route path='/show-artist' element={<ProtectedUser><ArtistPage /></ProtectedUser>} />

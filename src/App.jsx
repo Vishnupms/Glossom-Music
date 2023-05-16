@@ -18,7 +18,6 @@ const App = () => {
     <Router>
   
       <Routes>
-       <Route path="/landing/*" element={<LangingPage />} />
         <Route path="/artist/*" element={<ArtistRoutes />} />
         <Route path="/*" element={<UserRoutes />} />
         <Route path="/admin/*" element={<AdminRoutes />} />
