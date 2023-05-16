@@ -10,12 +10,12 @@ import Dropdown from "../../components/User/Cards/DropDown";
 function HomePage() {
   const {activeSong} = useSelector((state)=>state.player)
   
-  console.log(activeSong,"activee")
+
   return (
     <>
    <div className="relative flex  ">
 <Sidebar/>
-        <div className="flex-1 flex flex-col bg-gradient-to-br from-black to-[#063c55] ">
+        <div className="flex-1 flex flex-col bg-gradient-to-br from-black to-[#9606cf] ">
           
   
     <div className="px-6 h-[calc(100vh-0px)]  overflow-y-scroll hide-scrollbar flex xl:flex-row flex-col-reverse">
@@ -25,7 +25,7 @@ function HomePage() {
       
       <Discover/>
    
-<h1>hai</h1>
+
     </div>
       <div className="xl:sticky relative top-2 h-fit">
         <div className="ml-44">

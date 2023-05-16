@@ -1,35 +1,32 @@
 import React from "react";
-import user from '../../../assets/icon.png'
+import logo from '../../../assets/logo.png'
 import { Link } from "react-router-dom";
-import { useSelector } from 'react-redux';
 
 
-const UserProfile = ({ toggle }) => {
-  const { name,ImgURL} = useSelector((state) => state.user)
+const Logo = ({ toggle }) => {
   return (
     <div
       className={` flex gap-3 items-center ${
         toggle
           ? "bg-none transition-all duration-300 delay-200"
-          : "bg-black bg-opacity-40 rounded-3xl "
+          : "bg-gradient-to-br from-black to-[#72069c]  rounded-3xl "
       }`}
     >
-      <div className="min-w-[3.2rem] h-[3.2rem]">
-        <Link to={"/profile"}>
+      <div className="min-w-[3.7rem] h-[3.7rem]">
+
         <img
-          src={user}
+          src={logo}
           alt=""
           className="w-full h-full rounded-full object-cover"
           
         />
-        </Link>
       </div>
       <div className={toggle ? "opacity-0 delay-200" : ""} >
-        <h3 className="text-xl">{name}</h3>
+        <h3 className="text-xl text-purple-400">Glossom</h3>
         
       </div>
     </div>
   );
 };
 
-export default UserProfile;
+export default Logo;

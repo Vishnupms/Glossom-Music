@@ -7,7 +7,7 @@ function PlaylistCard2() {
 
   return (
     <div
-    className="flex flex-col w-[120px] h-auto p-4 bg-white/10  backdrop-blur  rounded-lg cursor-pointer"
+    className="flex flex-col w-[170px] h-auto p-4 bg-white/10  backdrop-blur  rounded-lg cursor-pointer"
   
   >
     <div className="relative w-50 h-30 ">

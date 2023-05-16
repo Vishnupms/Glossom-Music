@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { HiOutlineHashtag, HiOutlineHome, HiOutlineMenu, HiOutlinePhotograph, HiOutlineUserGroup } from 'react-icons/hi';
-import UserProfile from './Cards/UserProfile';
+import UserProfile from './Cards/Logo';
 
 
 const menus = [
-  { name: 'Discover', to: '/home', icon: HiOutlineHome },
-  { name: 'Around You', to: '/around-you', icon: HiOutlinePhotograph },
+  { name: 'Discover', to: '/  ', icon: HiOutlineHome },
   { name: 'Playlists', to: '/playlist', icon: HiOutlinePhotograph },
   { name: 'Top Artists', to: '/top-artist', icon: HiOutlineUserGroup },
   { name: 'Favourites', to: '/my-favourites', icon: HiOutlineHashtag },
@@ -14,13 +13,13 @@ const menus = [
 
 
 const Sidebar = () => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   return (
     <>
     <div className=" md:flex hidden gap-6"> 
       <div
-        className={`bg-[#05201c] min-h-screen ${
+        className={`bg-[#1f0733] min-h-screen ${
           open ? "w-[13rem]" : "w-16"
         } duration-500 text-gray-100 px-2`}
       >

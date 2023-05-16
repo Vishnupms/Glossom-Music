@@ -10,6 +10,7 @@ import GetPlaylist from '../components/User/Playlist/GetPlaylist';
 import TopArtist from '../components/User/TopArtist';
 import ArtistPage from '../pages/User/ArtistPage';
 import Favourites from '../pages/User/Favourites';
+import ProtectedUser from '../../ProtectedUser';
 
 
 
@@ -19,17 +20,19 @@ const Profile = lazy(() => import("../components/User/Profile"));
 function UserRoutes() {
   return (
     <Routes>
-        <Route path='/' element={<LoginPage/> } />
+        <Route path='/login' element={<LoginPage/> } />
         <Route path='/register' element={<RegisterPage/> } />
         <Route path='/register/otp' element={<Otp/>} />
-        <Route path='/home' element={<HomePage/> } />
-        <Route path="/profile"element={<Suspense fallback={<div><h2>Lazy Loading</h2></div>}> <Profile /></Suspense>}/>
-        <Route path='/top-artist' element={<TopArtist />} />
-        <Route path='/show-artist' element={<ArtistPage />} />
-        <Route path='/playlist' element={<Playlist />} />
-        <Route path='/create-playlist' element={<CreatePlaylist />} />
-        <Route path='/get-playlist' element={<GetPlaylist />} />
-        <Route path='/my-favourites' element={<Favourites />} />
+        <Route path='/' element={<ProtectedUser><HomePage/></ProtectedUser> } />
+       
+        <Route path="/profile"element={<Suspense fallback={<div><h2>Lazy Loading</h2></div>}> <ProtectedUser> <Profile /></ProtectedUser></Suspense>}/>
+        <Route path='/top-artist' element={<ProtectedUser><TopArtist /></ProtectedUser>} />
+        <Route path='/show-artist' element={<ProtectedUser><ArtistPage /></ProtectedUser>} />
+        <Route path='/playlist' element={<ProtectedUser><Playlist /></ProtectedUser>} />
+        <Route path='/create-playlist' element={<ProtectedUser><CreatePlaylist /></ProtectedUser>} />
+        <Route path='/get-playlist' element={<ProtectedUser><GetPlaylist /></ProtectedUser>} />
+        <Route path='/my-favourites' element={<ProtectedUser><Favourites /></ProtectedUser>} />
+        
 
        
 

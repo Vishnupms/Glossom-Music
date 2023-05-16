@@ -2,9 +2,12 @@ import React from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/outline";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 function Dropdown() {
     const user = useSelector((state)=>(state.user))
+    console.log(user,"svss")
+    const navigate = useNavigate()
   return (
     <div className="relative inline-block text-left">
       <Menu>
@@ -13,8 +16,8 @@ function Dropdown() {
             <div>
               <Menu.Button className="flex items-center justify-center focus:outline-none">
                 <img
-                  src="https://via.placeholder.com/50"
-                  alt="Profile Image"
+                  src={user?.imgUrl}
+                  alt=""
                   className="w-8 h-8 rounded-full"
                 />
                 <span className="ml-2 mr-1 text-white font-medium">{user?.name}</span>
@@ -41,7 +44,7 @@ function Dropdown() {
                 <div className="px-4 py-3">
                   <p className="text-sm text-gray-700">Signed in as</p>
                   <p className="text-sm font-medium text-gray-900 truncate">
-                    john.doe@example.com
+                    {user.email}
                   </p>
                 </div>
 
@@ -50,6 +53,7 @@ function Dropdown() {
                     {({ active }) => (
                       <a
                         href="#"
+                        onClick={()=>navigate("/profile")}
                         className={`${
                           active
                             ? "bg-gray-100 text-gray-900"
@@ -66,7 +70,8 @@ function Dropdown() {
                   <Menu.Item>
                     {({ active }) => (
                       <a
-                        href="#"
+                        href="/login"
+                        onClick={()=>{localStorage.clear()}}
                         className={`${
                           active
                             ? "bg-gray-100 text-gray-900"

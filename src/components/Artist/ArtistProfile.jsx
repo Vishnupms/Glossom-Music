@@ -2,24 +2,24 @@ import React, { useState } from 'react'
 import ArtistSidebar from './ArtistSidebar'
 import { useSelector } from 'react-redux'
 import {AiOutlineEdit,AiOutlineSave} from 'react-icons/ai'
-import Instance from '../../Axios/Instance'
 import { useDispatch } from 'react-redux'
 import { userActions } from '../../redux/Slice/UserSlice'
 import { Toaster, toast } from 'react-hot-toast'
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 import { storage } from '../../config/firebase.config'
 import ArtistLayout from '../../pages/Artist/ArtistLayout'
+import ArtistInstance from '../../Axios/ArtistInstance'
+import { artistActions } from '../../redux/Slice/ArtistSlice'
 
 function ArtistProfile() {
 
   const dispatch = useDispatch()
   const name = useSelector((state)=>state?.artist?.name)
-  const {email,id,ImgURL} = useSelector((state)=>state?.user)
-  console.log(ImgURL)
+  const {email,id,imgURL} = useSelector((state)=>state?.artist)
   const [hovered, setHovered] = useState(false);
   const [editing, setEditing] = useState(false);
   const [editedName, setEditedName] = useState(name);
-  const [photo,setPhoto] = useState(ImgURL)
+  const [photo,setPhoto] = useState(imgURL)
 
 
 
@@ -27,7 +27,7 @@ function ArtistProfile() {
     // Save the edited name and exit edit mode
     if (editedName) {
      
-      await Instance.post(`/user/updateProfile/${id}`, {
+      await ArtistInstance.post(`/artist/update-artist-profile/${id}`, {
         editedName,
       }).then((response) => {
         console.log(response?.data?.profile?.username);
@@ -35,12 +35,7 @@ function ArtistProfile() {
 
         if (response?.data?.success) {
           
-          dispatch(
-            userActions.setUserName({
-              name: editedName
-            })
-
-            );
+        
             toast.success(response?.data?.message)
           }
       });
@@ -48,7 +43,12 @@ function ArtistProfile() {
    
     setEditing(false);
   };
+  // dispatch(
+  //   artistActions.setArtistName({
+  //     name: editedName
+  //   })
 
+  //   );
 
 
   const handleCancel = () => {
@@ -78,11 +78,10 @@ function ArtistProfile() {
         getDownloadURL(uploadtask.snapshot.ref).then((downloadURL) => {
           console.log(downloadURL);
           setPhoto(downloadURL)
-          dispatch(
-            userActions.setUserImg({
-              ImgURL:downloadURL
-            })
-          );
+          ArtistInstance.post(`/artist/update-artist-profile/${id}`, {
+            imageUrl:downloadURL
+          }).then((response) => {
+            console.log(response?.data?.profile,"scsc");})
           toast.success("Photo updated successfully")
         });
       }

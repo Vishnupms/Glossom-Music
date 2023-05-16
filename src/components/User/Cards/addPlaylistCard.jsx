@@ -1,26 +1,14 @@
 import React from 'react'
 import icon from '../../../assets/icon.png'
 import { useNavigate } from 'react-router-dom'
-import { addplaylist } from '../../../Api/Api'
 
 
 
 
-function AddPlaylistCard() {
+
+function AddPlaylistCard({name,handleClick}) {
  
-  const navigate = useNavigate()
 
- const handlePlaylist = async()=>{
-  const data = await addplaylist()
-  if (data.success==false){
-    console.log(data)
-
-  }
-  else{
-    console.log(data)
-    navigate("/create-playlist")
-  }
- }
 
   return (
     <div
@@ -28,7 +16,7 @@ function AddPlaylistCard() {
      
   >
     <div className="relative w-full h-50 group">
-      < div className="absolute  inset-0 justify-center items-center hover:bg-white/10 bg-opacity-50" onClick={handlePlaylist}></div>
+      < div className="absolute  inset-0 justify-center items-center hover:bg-white/10 bg-opacity-50" onClick={handleClick}></div>
       <a >
       <img className="hover:scale-100" src={icon}  ></img>
         </a>
@@ -37,7 +25,7 @@ function AddPlaylistCard() {
    
       <div className="flex justify-between items-center text-md">
       <p className="font-semibold text-lg text-white truncate">
-      Create New Playlist
+      Create New {name}
       </p>
 
       </div>

@@ -6,7 +6,7 @@ const initialState = {
   token: null,
   id: null,
   email:null,
-  ImgURL: null,
+  imgUrl: null,
 };
 
 export const  UserSlice = createSlice({
@@ -19,17 +19,17 @@ export const  UserSlice = createSlice({
       state.token = action.payload.token;
       state.id = action.payload.id;
       state.email = action.payload.email;
-      state.ImgURL = action.payload.ImgURL;
+      state.imgUrl = action.payload.imgUrl;
     },
     setUserLogout: (state) => {
       state.user = null;
       state.name = null;
       state.token = null;
       state.id = null;
-      state.ImgURL = null;
+      state.imgUrl = null;
     },
     setUserImg: (state, action) => {
-      state.ImgURL = action.payload.ImgURL
+      state.imgUrl = action.payload.result.data.imgUrl
     },
     setUserName:(state, action)=>{
       state.name = action.payload.name

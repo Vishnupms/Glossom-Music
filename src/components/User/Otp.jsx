@@ -1,10 +1,10 @@
 import React, { useState ,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast, Toaster } from "react-hot-toast";
-import Instance from '../../Axios/Instance'
+import Instance from "../../Axios/Instance";
 
 function Otp() {
-
+ 
 const navigate = useNavigate()
 const [otpvalue,setOtpvalue] = useState("")
 const [counter,setCounter] = useState(50)
@@ -17,7 +17,7 @@ const verifyOtp = (e)=>{
     e.preventDefault()
     
     Instance.post("/user/signup",{otpvalue}).then(()=>{
-        navigate('/' ,{replace:true})
+        navigate('/login' ,{replace:true})
     })
 }
 

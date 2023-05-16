@@ -1,5 +1,5 @@
 /* eslint-disable import/no-unresolved */
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode } from 'swiper'
@@ -8,10 +8,11 @@ import 'swiper/css/free-mode';
 import { useDispatch, useSelector } from 'react-redux';
 import PlayPause from './Cards/PlayPause';
 import { playerActions } from '../../redux/Slice/PlayerSlice';
+import { getArtist } from '../../Api/Api';
 
 
 const TopChartCard = ({ song, i,  isPlaying, activeSong, handlePauseClick, handlePlayClick }) => (
-  <div className={`w-full flex flex-row items-center hover:bg-[#4c426e] ${activeSong?.name===song?.name ? 'bg-[#4c426e]' : 'bg-transparent'} py-2 p-4 rounded-lg cursor-pointer mb-2`}>
+  <div className={`w-full flex flex-row items-center hover:bg-[#4c426e] ${activeSong?.name===song?.name ? 'bg-[#2f225a]' : 'bg-transparent'} py-2 p-4 rounded-lg cursor-pointer mb-2`}>
     <h3 className="font-bold text-base text-white mr-3">{i + 1}.</h3>
     <div className="flex-1 flex flex-row justify-between items-center">
       <img className="w-16 h-16 rounded-lg" src={song?.imgURL} alt={song?.name} />
@@ -42,6 +43,7 @@ const TopChartCard = ({ song, i,  isPlaying, activeSong, handlePauseClick, handl
 const TopPlay = () => {
   const dispatch = useDispatch();
   const { activeSong, isPlaying, data } = useSelector((state) => state.player);
+const [artist,setArtist] = useState([])
  
 
   const divRef = useRef(null);
@@ -64,6 +66,18 @@ const TopPlay = () => {
     dispatch(playerActions.playPause(true))
 
 }
+useEffect(() => {
+  async function invoke() {
+ const data = await getArtist();
+ if (data.status === "failed") {
+  navigate("/");
+} 
+else {
+  setArtist(data);
+}
+    }
+  invoke();
+  }, []);
  
 
 
@@ -111,18 +125,21 @@ const TopPlay = () => {
           modules={[FreeMode]}
           className="mt-4"
         >
-          {[1,2,3,4,5].slice(0, 5).map((artist) => (
+          {artist?.map((artist) => (
             <SwiperSlide
               key={artist?.key}
-              style={{ width: '25%', height: 'auto' }}
+              style={{ width: '22%', height: 'auto' }}
               className="shadow-lg rounded-full animate-slideright"
             >
-              <Link to='/artists'>
-                <img src={artist?.images?.background} alt="Name" className="rounded-full w-full object-cover" />
+              <Link to='/top-artist'>
+                <img src={artist?.imgURL} alt="Name" className="rounded-full w-full object-cover" />
               </Link>
             </SwiperSlide>
           ))}
         </Swiper>
+      </div>
+      <div className='mt-24'>
+
       </div>
     </div>
     </>

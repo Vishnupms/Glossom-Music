@@ -37,10 +37,10 @@ function Login() {
             token: res.data.token,
             id: res.data.user._id,
             email:res.data.user.email,
-            imgURL: res.data?.imgURL,
+            imgUrl: res.data.user.imgUrl,
           })
         );
-        navigate('/home',{replace:true})
+        navigate('/',{replace:true})
       }).catch((error)=>{
         console.log(error)
         toast.error(error.response.data.error)

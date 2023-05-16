@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { loginValidation } from "../../../helpers/validate";
 import { artistActions } from "../../../redux/Slice/ArtistSlice";
 import Tilt from "react-parallax-tilt";
-import Instance from "../../../Axios/Instance";
+import ArtistInstance from "../../../Axios/ArtistInstance";
 import "./Login.css";
 
 function ArtistLogin() {
@@ -23,18 +23,19 @@ function ArtistLogin() {
     onSubmit: async (values) => {
       console.log("happy ending");
 
-      await Instance.post("/artist/login", { values })
+      await ArtistInstance.post("/artist/login", { values })
         .then((res) => {
           let { token } = res.data;
-          console.log(res.data)
+          console.log(res.data,"datomms")
           localStorage.setItem("artisttoken", token);
           dispatch(
             artistActions.setArtistLogin({
               artist: "artist",
               name: res.data.artist.username,
+              email:res.data.artist?.email,
+              imgURL: res.data.artist?.imgURL,
               artistToken: res.data.token,
               id: res.data.artist._id,
-              imgURL: res.data?.imgURL,
             })
           );
           navigate("/artist", { replace: true });

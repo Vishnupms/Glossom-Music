@@ -3,20 +3,20 @@ import { Link } from 'react-router-dom';
 import { HiOutlineHashtag, HiOutlineHome, HiOutlineMenu, HiOutlinePhotograph, HiOutlineUserGroup } from 'react-icons/hi';
 
 const menus = [
-    { name: 'Discover', to: '/artist', icon: HiOutlineHome },
+    { name: 'Dashboard', to: '/artist', icon: HiOutlineHome },
     { name: 'Add Music', to: '/artist/addmusic', icon: HiOutlinePhotograph },
-    { name: 'Followers', to: '/followers', icon: HiOutlineUserGroup },
-    { name: 'My-music', to: '/my-music', icon: HiOutlineHashtag },
+    { name: 'Albums', to: '/artist/create-album', icon: HiOutlineUserGroup },
+    { name: 'Profile', to: '/artist/profile', icon: HiOutlineHashtag },
   ];
 
 function ArtistSidebar() {
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
 
     return (
       <>
       <div className=" md:flex hidden gap-6"> 
         <div
-          className={`bg-[#252525] min-h-screen ${
+          className={`bg-[#072c29] min-h-screen ${
             open ? "w-[12rem]" : "w-16"
           } duration-500 text-gray-100 px-4`}
         >

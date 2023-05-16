@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+//............cLIENT.........
 const Instance = axios.create({
     baseURL:"http://localhost:8000/api"
 })
@@ -7,7 +8,7 @@ const Instance = axios.create({
   // ------------------------------------------------------------------------Axios Interceptors-----------------------------------------------------------//
  
   // Injecting jwt in every request 
-  
+  // ADD INTERCEPTOR FOR CLIENT
   Instance.interceptors.request.use(
     (config) => {
       const token = localStorage.getItem("token");

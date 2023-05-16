@@ -50,7 +50,7 @@ const ArtistCard = ({ data}) => {
       <div className="relative w-full h-50 group">
       <Link to={"/show-artist"} state={data}>
         <div className="absolute  inset-0 justify-center items-center hover:bg-black/50 bg-opacity-50"></div>
-        <img className="hover:scale-100" src="https://www.cheatsheet.com/wp-content/uploads/2021/07/eminem-and-a-microphone.jpg?w=1200&h=901"></img>
+        <img className="hover:scale-100" src={data.imgURL}></img>
         </Link>
       </div>
       <div className="mt-4 flex flex-col">

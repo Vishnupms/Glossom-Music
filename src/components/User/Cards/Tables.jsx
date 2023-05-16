@@ -3,6 +3,7 @@ import PlayPause from './PlayPause'
 import { useSelector } from 'react-redux'
 
 function Tables({data}) {
+  
   const {activeSong,isPlaying,currentSongs} = useSelector((state)=>state.player)
   return (
     <>

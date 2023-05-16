@@ -3,9 +3,10 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   artist: null,
   name: null,
+  email:null,
   artistToken: null,
   id: null,
-  ImgURL: null,
+  imgURL: null,
 };
 
 export const ArtistSlice = createSlice({
@@ -15,19 +16,20 @@ export const ArtistSlice = createSlice({
     setArtistLogin: (state, action) => {
       state.artist = action.payload.artist;
       state.name = action.payload.name;
+      state.email = action.payload.email
       state.artistToken = action.payload.artistToken;
       state.id = action.payload.id;
-      state.ImgURL = action.payload.ImgURL;
+      state.imgURL = action.payload.imgURL;
     },
     setArtistLogout: (state, action) => {
       state.artist = null;
       state.name = null;
       state.artistToken = null;
       state.id = null;
-      state.ImgURL = null;
+      state.imgURL = null;
     },
     setArtistImg: (state, action) => {
-      state.ImgURL = action.payload;
+      state.imgURL = action.payload;
     },
   },
 });

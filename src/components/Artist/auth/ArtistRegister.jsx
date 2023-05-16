@@ -4,7 +4,7 @@ import { toast, Toaster } from "react-hot-toast";
 import './Login.css';
 import { useFormik } from 'formik';
 import { siginupValidation } from '../../../helpers/validate';
-import Instance from '../../../Axios/Instance';
+import ArtistInstance from '../../../Axios/ArtistInstance';
 
 function ArtistRegister() {
   const navigate =useNavigate()
@@ -27,7 +27,7 @@ function ArtistRegister() {
       setTimeout(function () {
         toast.dismiss();
       }, 3000)
-      await Instance
+      await ArtistInstance
       .post("/artist/signup",{values})
       .then((res)=>{
         toast.success("poli")

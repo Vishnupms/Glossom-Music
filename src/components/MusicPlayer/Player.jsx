@@ -1,9 +1,9 @@
-/* eslint-disable jsx-a11y/media-has-caption */
 import React, { useRef, useEffect } from 'react';
+import Instance from '../../Axios/Instance';
 
 const Player = ({ activeSong, isPlaying, volume, seekTime, onEnded, onTimeUpdate, onLoadedData, repeat }) => {
   const ref = useRef(null);
-  // eslint-disable-next-line no-unused-expressions
+
   if (ref.current) {
     if (isPlaying) {
       ref.current.play();
@@ -15,10 +15,39 @@ const Player = ({ activeSong, isPlaying, volume, seekTime, onEnded, onTimeUpdate
   useEffect(() => {
     ref.current.volume = volume;
   }, [volume]);
-  // updates audio element only on seekTime change (and not on each rerender):
+
   useEffect(() => {
     ref.current.currentTime = seekTime;
   }, [seekTime]);
+
+  useEffect(() => {
+    let intervalId;
+    let viewCounted = false;
+  
+    const handleTimeUpdate = () => {
+      const currentTime = ref.current.currentTime;
+      if (currentTime >= 40 && !viewCounted) {
+        const incrementViewCount = async () => {
+          try {
+            const response = await Instance.post(`/user/set-view/${activeSong._id}`);
+            console.log(response.data);
+          } catch (error) {
+            console.error(error);
+          }
+        };
+        incrementViewCount();
+        viewCounted = true;
+        clearInterval(intervalId);
+      }
+    };
+  
+    if (isPlaying) {
+      intervalId = setInterval(handleTimeUpdate, 1000);
+    }
+  
+    return () => clearInterval(intervalId);
+  }, [isPlaying, activeSong]);
+  
 
   return (
     <audio

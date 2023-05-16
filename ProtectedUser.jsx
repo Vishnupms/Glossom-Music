@@ -2,13 +2,10 @@
 import { Navigate } from 'react-router-dom'
 import Instance from './src/Axios/Instance'
 
-const protectedRoutes =({children})=>{
+const protectedUser =({children})=>{
     const token = localStorage.getItem("token")
     if(token){
-        Instance.get("/verifyUser",
-        {headers : {
-            Authorization:"Bearer" + localStorage.getItem("token")
-        }})
+        Instance.get("/user/verifyUser")
         .then((response)=>{
             const user = response.data.user
 
@@ -27,4 +24,4 @@ const protectedRoutes =({children})=>{
     return children
 }
 
-export default protectedRoutes
+export default protectedUser
