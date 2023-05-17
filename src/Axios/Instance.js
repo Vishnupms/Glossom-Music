@@ -2,7 +2,7 @@ import axios from 'axios';
 
 //............cLIENT.........
 const Instance = axios.create({
-    baseURL:"https:glossom.onrender.com/api"
+    baseURL:"https://glossom.onrender.com/api"
 })
 
 // const Instance = axios.create({
