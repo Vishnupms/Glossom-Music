@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { playerActions } from '../../redux/Slice/PlayerSlice';
 import Controls from './Controls';
 import Player from './Player';
-import Seekbar from './Seekbar';
+import Seekbar from './SeekBar';
 import Track from './Track';
 import VolumeBar from './VolumeBar';
 
