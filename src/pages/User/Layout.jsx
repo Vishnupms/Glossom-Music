@@ -9,7 +9,7 @@ const Layout = ({ children }) => {
  <div className="relative flex  ">
 <Sidebar/>
         <Toaster position="top-center"></Toaster>
-        <div className="flex-1 flex flex-col bg-gradient-to-br from-black to-[#9606cf]">
+        <div className="flex-1 flex flex-col bg-gradient-to-br from-black to-[#8603b9]">
   
 
   

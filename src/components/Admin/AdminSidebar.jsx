@@ -16,7 +16,7 @@ function AdminSidebar() {
       <>
       <div className=" md:flex hidden gap-6"> 
         <div
-          className="bg-[#333232] min-h-screen w-[12rem]"
+          className="bg-[#242323] min-h-screen w-[12rem]"
         >
           <div className="py-3 flex justify-end">
            

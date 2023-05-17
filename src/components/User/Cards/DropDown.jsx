@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 
 function Dropdown() {
     const user = useSelector((state)=>(state.user))
-    console.log(user,"svss")
     const navigate = useNavigate()
   return (
     <div className="relative inline-block text-left">
@@ -39,7 +38,7 @@ function Dropdown() {
             >
               <Menu.Items
                 static
-                className="absolute right-0 w-52 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                className="absolute right-0 w-52 mt-2 origin-top-left bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
               >
                 <div className="px-4 py-3">
                   <p className="text-sm text-gray-700">Signed in as</p>

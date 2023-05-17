@@ -10,20 +10,16 @@ const ArtistCard = ({ data}) => {
   const {id} = useSelector((state)=>state.user)
   const navigate = useNavigate()
 
-  console.log(id, data.username, 'Ids');
+
   const handleFollow = async () => {
     const result = await FollowArtist(id,data._id);
-    console.log(result);
     if (result.success) {
-      console.log('success');
       setFollowing(true);
       toast.success(`followed ${data.username}`)
-      console.log(result.message)
     }
   };
   const handleUnFollow = async () => {
     const result = await UnfollowArtist(id, data._id);
-    console.log(result);
     if (result.success) {
       setFollowing(false);
       setToasting(result.message);

@@ -32,10 +32,10 @@ const AddTrack = () => {
     async function invoke() {
       const data = await getGenre();
       if (data.status === "failed") {
-        //  console.log(data,"dataaa")
+
       } else {
         setGenre(data?.category);
-        console.log(data?.category, ".................");
+
       }
     }
     invoke();
@@ -52,7 +52,7 @@ const AddTrack = () => {
       return;
     }
     const audioref = ref(storage, `/songs/${audio.name}`);
-    console.log(audioref);
+
     const uploadtask = uploadBytesResumable(audioref, audio);
     uploadtask.on(
       "state_changed",
@@ -62,14 +62,14 @@ const AddTrack = () => {
         );
         // setProgresspercent(progress);
         setAudioProgress(progress);
-        console.log(progress)
+
       },
       (error) => {
-        console.log(error);
+
       },
       () => {
         getDownloadURL(uploadtask.snapshot.ref).then((downloadURL) => {
-          console.log(downloadURL);
+
           setAudio(downloadURL);
         });
       }
@@ -86,7 +86,7 @@ const AddTrack = () => {
       return;
     }
     const imageref = ref(storage, `/images/${img.name}`);
-    console.log(imageref);
+
     const uploadtask = uploadBytesResumable(imageref, img);
     uploadtask.on(
       "state_changed",
@@ -98,11 +98,11 @@ const AddTrack = () => {
         setImgProgress(progress);
       },
       (error) => {
-        console.log(error);
+
       },
       () => {
         getDownloadURL(uploadtask.snapshot.ref).then((downloadURL) => {
-          console.log(downloadURL);
+  
           setImg(downloadURL);
         });
       }
@@ -113,16 +113,16 @@ const AddTrack = () => {
     if (datas && img && audio) {
       try {
         const result = await addTrack(datas, img, audio, name, category);
-        console.log(audio, 'fgsdg');
+
         if (result.success) {
-          console.log(result);
+
           toast.success(result.message)
         } else {
           toast.error(result.message);
         }
         // });
       } catch (error) {
-        console.log(error);
+
       }
     }
   };

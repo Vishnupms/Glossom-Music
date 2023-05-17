@@ -1,13 +1,13 @@
 import axios from 'axios';
 
 //............cLIENT.........
-const Instance = axios.create({
-    baseURL:"https:glossom.onrender.com/api"
-})
-
 // const Instance = axios.create({
-//   baseURL:"http://localhost:8000/api"
+//     baseURL:"https:glossom.onrender.com/api"
 // })
+
+const Instance = axios.create({
+  baseURL:"http://localhost:8000/api"
+})
 // ------------------------------------------------------------------------Axios Interceptors-----------------------------------------------------------//
  
   // Injecting jwt in every request 

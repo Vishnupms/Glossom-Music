@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { toast, Toaster } from "react-hot-toast";
 import { useFormik } from "formik"; 
 import { loginValidation } from '../../../helpers/validate';
@@ -29,7 +29,6 @@ function Login() {
       let { token } = res.data;
         localStorage.setItem('token', token);
 
-        console.log(res.data)
         dispatch(
           userActions.setUserLogin({
             user: "user",
@@ -40,9 +39,8 @@ function Login() {
             imgUrl: res.data.user.imgUrl,
           })
         );
-        navigate('/',{replace:true})
+        navigate('/home',{replace:true})
       }).catch((error)=>{
-        console.log(error)
         toast.error(error.response.data.error)
       }) 
   }});
@@ -60,7 +58,7 @@ function Login() {
         </form>
         <div className="flex justify-between px-4 md:px-6 pb-4">
           <a href='#' className='font-poppins text-white text-sm md:text-base'>Forgot Password?</a>
-          <a href='/register' className='font-poppins text-white text-sm md:text-base'>Don't have an account?</a>
+          <Link to='/register' className='font-poppins text-white text-sm md:text-base'>Don't have an account?</Link>
         </div>
       </div>
     </Tilt>

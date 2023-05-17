@@ -16,7 +16,6 @@ function Favourites() {
         };
         invoke();
       }, []);
-      console.log(likedSong,"dsfsgs")
   return (
     <Layout>
     <div className="px-6 h-[calc(100vh)]  hide-scrollbar flex xl:flex-row flex-col-reverse">

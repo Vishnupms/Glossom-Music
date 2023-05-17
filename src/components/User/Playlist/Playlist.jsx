@@ -15,10 +15,9 @@ function Playlist() {
   useEffect(() => {
     async function invoke() {
       const data = await getAllPlaylist();
-      console.log(data);
       if (data.success === false) {
 
-        console.log(data)
+
       } else {
         setPlaylist(data.data)
       }
@@ -30,11 +29,10 @@ function Playlist() {
  const handlePlaylist = async()=>{
   const data = await addplaylist()
   if (data.success==false){
-    console.log(data)
 
   }
   else{
-    console.log(data)
+
     navigate("/create-playlist")
   }
  }

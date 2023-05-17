@@ -30,9 +30,7 @@ const Player = ({ activeSong, isPlaying, volume, seekTime, onEnded, onTimeUpdate
         const incrementViewCount = async () => {
           try {
             const response = await Instance.post(`/user/set-view/${activeSong._id}`);
-            console.log(response.data);
           } catch (error) {
-            console.error(error);
           }
         };
         incrementViewCount();

@@ -43,10 +43,8 @@ const likeSong = async () => {
   const result = await LikeSong(song._id, id);
   if (result.success) {
     setLiked(true);
-    console.log(result.message,"mssss");
   } else {
     setLiked(false);
-    console.log(result.message,"msssss");
   }
 };
 

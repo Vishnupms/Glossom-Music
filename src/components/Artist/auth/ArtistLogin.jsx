@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast, Toaster } from "react-hot-toast";
 import { replace, useFormik } from "formik";
 import { useDispatch } from "react-redux";
@@ -21,12 +21,11 @@ function ArtistLogin() {
     validateOnBlur: false,
     validateOnChange: false,
     onSubmit: async (values) => {
-      console.log("happy ending");
+
 
       await ArtistInstance.post("/artist/login", { values })
         .then((res) => {
           let { token } = res.data;
-          console.log(res.data,"datomms")
           localStorage.setItem("artisttoken", token);
           dispatch(
             artistActions.setArtistLogin({
@@ -41,7 +40,7 @@ function ArtistLogin() {
           navigate("/artist", { replace: true });
         })
         .catch((error) => {
-          console.log(error);
+
           toast.error(error.response.data.error);
         });
 
@@ -80,10 +79,9 @@ function ArtistLogin() {
             <a href="#" className="font-poppins text-white">
               Forgot Password?
             </a>
-            <a href="/artist/signup" className="font-poppins text-white ml-12">
-              {" "}
+            <Link to={"/artist/signup"} className="font-poppins text-white ml-12">
               Dont have an account ?
-            </a>
+            </Link>
           </div>
         </Tilt>
       </div>

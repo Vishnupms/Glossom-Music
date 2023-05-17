@@ -26,7 +26,6 @@ export const verifyArtist = async (id) => {
 
   export const postCategory = async (obj) => {
     try {
-      console.log(obj);
   
       const res = await AdminInstance.post("/admin/add-category",obj);
       const data = res.data;
@@ -54,7 +53,7 @@ export const verifyArtist = async (id) => {
       
   //     axios.get('http://localhost:8000/api/admin/show-users').then((response)=>{
   //       const {data} = response;
-  //       console.log(data,"dadac")
+
   //       if (data) {
   //         return data;
   //       }

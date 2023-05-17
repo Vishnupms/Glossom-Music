@@ -40,7 +40,7 @@ const num= 5
           dispatch(playerActions.setSong({
             songs:result.songs
           }))
-          console.log(songCount,"aca")
+     
         }
       };
     invoke();

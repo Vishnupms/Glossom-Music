@@ -22,12 +22,8 @@ function CreatePlaylist() {
   useEffect(() => {
     async function invoke() {
       const data = await getAllPlaylist();
-      console.log(data);
       if (data.success === false) {
-
-        console.log(data)
       } else {
-        console.log(data.data[0].title,"dataaaaaa");
         setEditedName(data.data[0].title)
         
 

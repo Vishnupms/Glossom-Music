@@ -18,7 +18,7 @@ function AdminDash() {
         const result = await getUserChart();
         setData(result.data);
       } catch (error) {
-        console.log(error);
+   
       }
     };
 
@@ -33,12 +33,12 @@ function AdminDash() {
         setUser(data.users)
         setArtist(data.artist)
 
-        console.log(data, "data");
+
       }
     }
     invoke();
   }, []);
-  console.log(song, "song");
+
 
   let num = 5;
   const card = [

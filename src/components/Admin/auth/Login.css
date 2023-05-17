@@ -10,7 +10,7 @@
   
 }
 .artist:hover::before {
-  content: "I am an Artist";
+  content: "";
   top: 70%;
   left: 70%;
   transform: translate(-50%, -50%);

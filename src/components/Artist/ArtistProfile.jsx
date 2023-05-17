@@ -30,7 +30,7 @@ function ArtistProfile() {
       await ArtistInstance.post(`/artist/update-artist-profile/${id}`, {
         editedName,
       }).then((response) => {
-        console.log(response?.data?.profile?.username);
+    
         
 
         if (response?.data?.success) {
@@ -69,19 +69,18 @@ function ArtistProfile() {
         const progress = Math.round(
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100
         );
-        console.log(progress);
+  
       },
       (error) => {
-        console.log(error);
+
       },
       () => {
         getDownloadURL(uploadtask.snapshot.ref).then((downloadURL) => {
-          console.log(downloadURL);
+         
           setPhoto(downloadURL)
           ArtistInstance.post(`/artist/update-artist-profile/${id}`, {
             imageUrl:downloadURL
-          }).then((response) => {
-            console.log(response?.data?.profile,"scsc");})
+          })
           toast.success("Photo updated successfully")
         });
       }

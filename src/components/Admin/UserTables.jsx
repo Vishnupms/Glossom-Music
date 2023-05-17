@@ -5,38 +5,38 @@ import Action from "./Action";
 import { toast } from "react-hot-toast";
 
 function UserTables() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const closeModal = () => setIsModalOpen(false);
-  const [userId, setUserId] = useState("");
   const [data, setData] = useState([]);
   const name = "user";
 
   useEffect(() => {
     async function invoke() {
       const data = await getAllUsers();
-      console.log(data, ".................");
+   
       setData(data);
     }
     invoke();
   }, []);
 
-  const handleToggle = () => {
-    setIsModalOpen(!isModalOpen);
-  };
+  
 
-  const userBlock = async (id) => {
-    console.log(id,"lllllllllllllllllllllllllllllll");
-    try {
-      console.log(id, "id");
-      const data = await blockUser(id);
-      console.log(data, "looo");
-      if (data.status === "success") {
-        toast.success(data.message);
-        setIsModalOpen(false);
+  const userBlock = async (id, isBanned) => {
+    const shouldBlock = window.confirm("Are you sure you want to block this user?");
+    if (shouldBlock) {
+      try {
+
+        const data = await blockUser(id);
+     
+        if (data.status === "success") {
+          toast.success(data.message);
+          // Perform any necessary state updates here
+        }
+      } catch (error) {
+ 
       }
-    } catch (error) {
-      console.log(error);
     }
+  };
+  const handleToggle = (id) => {
+    userBlock(id)
   };
 
   return (
@@ -109,55 +109,8 @@ function UserTables() {
                             {user.phone}
                           </td>
 
-                          <Action handleToggle={handleToggle} name={name} />
-                          {isModalOpen && (
-                            <div
-                              id="popup-modal"
-                              tabIndex="-1"
-                              className="fixed top-0 left-0 right-0 z-50 p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full bg-black bg-opacity-50"
-                            >
-                              <div className="relative w-full max-w-md max-h-full mx-auto my-8">
-                                <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                  <div className="p-6 text-center">
-                                    <svg
-                                      aria-hidden="true"
-                                      className="mx-auto mb-4 text-gray-400 w-14 h-14 dark:text-gray-200"
-                                      fill="none"
-                                      stroke="currentColor"
-                                      viewBox="0 0 24 24"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                      <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="2"
-                                        d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                                      ></path>
-                                    </svg>
-                                    <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
-                                      Are you sure you want to Ban This User ?
-                                    </h3>
-                                    <div className="flex flex-col md:flex-row gap-4">
-                                      <button
-                                        type="button"
-                                        onClick={closeModal}
-                                        className="w-full md:w-auto flex items-center justify-center gap-2 text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                                      >
-                                        Cancel
-                                      </button>
-                                      <button
-                                        type="button"
-                                        className="w-full md:w-auto flex items-center justify-center gap-2 text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                                        onClick={() => userBlock(user._id)}
-                                      >
-                                        {user.isBanned ? "UnBan" : "Ban"}
-                                      </button>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          )}
+                          <Action handleToggle={handleToggle} id={user._id} name={name} />
+                          
                         </tr>
                         &nbsp;
                       </tbody>

@@ -10,11 +10,11 @@
   
 }
 .artist:hover::before {
-  content: "I am an Artist";
+  content: "";
   top: 70%;
   left: 70%;
   transform: translate(-50%, -50%);
-  position: absolute;
+  position: absolutez;
   color: white;
   opacity: 90%;
   font-size: 1.7rem;

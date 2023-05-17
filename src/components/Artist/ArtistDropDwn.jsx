@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 function ArtistDropdown() {
     const user = useSelector((state)=>(state.artist))
-    console.log(user,"svss")
+
     const navigate = useNavigate()
   return (
     <div className="relative inline-block text-left">

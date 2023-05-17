@@ -7,7 +7,7 @@ function Card({title,footer,num}) {
   const handleCardClick = () => {
     if (title === 'My Songs') {
       navigate('/artist/my-songs');
-      console.log("first")
+
     }
   
   };

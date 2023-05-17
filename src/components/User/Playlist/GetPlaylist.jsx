@@ -34,9 +34,7 @@ function GetPlaylist() {
     async function invoke() {
       const data = await getViewPlaylist(listId);
       if (data.success === true) {
-        console.log(data.data[0].songs, "songiomm");
         setListSongs(data.data[0].songs);
-        console.log(listsongs, "listed");
       } else {
       }
     }
@@ -89,7 +87,6 @@ function GetPlaylist() {
         toast.error(data.message);
       }
     } else {
-      console.log(error, "something went wrong");
     }
   };
 
@@ -202,7 +199,8 @@ function GetPlaylist() {
               </div>
 
               <div className="mt-4 flex flex-col gap-1">
-                {tempSong.filter(searchData).map((song) => (
+              {tempSong.filter(searchData).length > 0 ? 
+                tempSong.filter(searchData).map((song) => (
                   <div
                     className={`w-full flex flex-row items-center hover:bg-[#4c426e] ${
                       song?.title ? "bg-[#4c426e]" : "bg-transparent"
@@ -234,7 +232,9 @@ function GetPlaylist() {
                       </button>
                     </div>
                   </div>
-                ))}
+                )): (
+                  <p>There are no songs with this name.</p>
+                )}
               </div>
             </div>
           </div>

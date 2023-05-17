@@ -18,7 +18,7 @@ else {
     }
   invoke();
   }, []);
-// console.log(artist,"artistee")
+
 
   return (
 

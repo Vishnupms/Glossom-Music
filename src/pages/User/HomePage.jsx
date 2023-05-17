@@ -15,7 +15,7 @@ function HomePage() {
     <>
    <div className="relative flex  ">
 <Sidebar/>
-        <div className="flex-1 flex flex-col bg-gradient-to-br from-black to-[#9606cf] ">
+        <div className="flex-1 flex flex-col bg-gradient-to-br from-black to-[#8603b9] ">
           
   
     <div className="px-6 h-[calc(100vh-0px)]  overflow-y-scroll hide-scrollbar flex xl:flex-row flex-col-reverse">

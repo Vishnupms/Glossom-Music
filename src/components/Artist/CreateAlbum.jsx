@@ -31,7 +31,7 @@ function CreateAlbum() {
     }
   };
   const songId = selectedSongs.map(song=>song._id)
-  console.log(songId,"IDDD")
+
   
 
   const handleFileInputChange = (event) => {
@@ -60,7 +60,6 @@ function CreateAlbum() {
             setLoading(false); // Set loading to false after the upload is complete
           }
         } catch (error) {
-          console.log(error, "Error in publishing album");
           setLoading(false); // Set loading to false after the upload is complete
         }
       }
@@ -88,18 +87,15 @@ function CreateAlbum() {
           setProgress(progress);
         },
         (error) => {
-          console.log(error, "Error in uploading image");
           reject(error);
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref)
             .then((downloadURL) => {
-              console.log(downloadURL);
               setImgURL(downloadURL);
               resolve();
             })
             .catch((error) => {
-              console.log(error, "Error in getting download URL");
               reject(error);
             });
         }
@@ -110,13 +106,12 @@ function CreateAlbum() {
       await uploadPromise;
       upload();
     } catch (error) {
-      console.log(error, "Error in uploading image");
+
       setLoading(false); // Set loading to false after the upload is complete
     }
   };
 }
   
-  console.log(name,"nameeee")
   return (
     <ArtistLayout>
       <div className="px-6 h-[calc(100vh)] overflow-y-scroll hide-scrollbar flex xl:flex-row flex-col-reverse">

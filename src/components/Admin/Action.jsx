@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function Action({handleToggle,name}) {
+function Action({handleToggle,name,id}) {
   const [isOpen, setIsOpen] = useState(false);
 
 
@@ -34,10 +34,10 @@ function Action({handleToggle,name}) {
           >
             <li>
               <a
-                onClick={handleToggle}
+                onClick={()=>handleToggle(id)}
                 className="block px-4 py-2 hover:bg-red-700 dark:hover:bg-gray-600 dark:hover:text-white"
               >
-                {name==="user"?"Ban":"Verify"}
+                {name==="user"?"Ban":"Verify "}
               </a>
             </li>
     

@@ -89,7 +89,6 @@ export const getPlaylist = async (id) => {
 };
  
 export const addSongToPlaylist = async (obj) => {
-  console.log(obj);
   try {
     const res = await Instance.post(
       `/user/add-to-playlist`,
@@ -123,7 +122,6 @@ export const getArtist = async () => {
 
 //...................................................................
 export const getViewPlaylist = async (id) => {
-  console.log(id);
   try {
     const res = await   Instance.get(
       `/user/get-playlist-songs/${id}`
@@ -153,7 +151,6 @@ export const LikeSong = async (trackId, userId) => {
   try {
     const response = await Instance.post(`/user/like-song/${userId}/${trackId}`);
     const { data } = response;
-    console.log(data);
     if (data) {
       return data;
     }
@@ -188,7 +185,6 @@ export const checkLikedSong = async (id, songId) => {
 };
 //.............................FOLLOW...........................
 export const FollowArtist = async (id, artistId) => {
-  console.log(id, artistId, 'fIds');
   try {
     const response = await Instance.post(`/user/follow-artist/${id}/${artistId}`);
     const { data } = response;

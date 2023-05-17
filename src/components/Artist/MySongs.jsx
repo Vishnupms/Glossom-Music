@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ArtistLayout from '../../pages/Artist/ArtistLayout'
 import { deleteSong, getMyTracks } from '../../Api/ArtistApi';
-import DropdownMenu from './auth/DrpDwn';
+import DropdownMenu from './DrpDwn';
 import { toast } from 'react-hot-toast';
 
 function MySongs() {
@@ -22,7 +22,6 @@ function MySongs() {
   const handleDelete = async (id) => {
     const result = await deleteSong(id);
     if (result.success) {
-      console.log(result);
      toast.success(result.message)
      setData()
      setIsModalOpen(false)

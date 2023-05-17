@@ -1,5 +1,5 @@
 import React, { useState} from 'react';
-import {useNavigate} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import { toast, Toaster } from "react-hot-toast";
 import './Login.css';
 import { useFormik } from 'formik';
@@ -22,7 +22,6 @@ function RegisterFan() {
     onSubmit: async (values) => {
       
       toast.loading("We are processing your request...");
-      console.log(values)
       setTimeout(function () {
         toast.dismiss();
       }, 30000)
@@ -33,7 +32,6 @@ function RegisterFan() {
         navigate('/register/otp',{replace:true})
       })
       .catch((error) => {
-        console.log(error);
         toast.error(error.response.data.error)
     });
   },
@@ -56,7 +54,7 @@ function RegisterFan() {
             <input type="password" {...Formik.getFieldProps("cnfpswd")} placeholder='Confirm Password' className='font-poppins input-text' />
 
             <input type="submit" className='font-poppins cursor-pointer px-3 py-1 rounded-full bg-white bg-opacity-50 hover:bg-white' />
-            <a href='/' className='font-poppins text-white/60'>Already have an account ?</a>
+            <Link to='/login' className='font-poppins text-white/60'>Already have an account ?</Link>
           </form>
         </div>
       </div>  

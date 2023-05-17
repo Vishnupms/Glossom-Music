@@ -27,8 +27,10 @@ const Searchbar = () => {
           className="flex-1 bg-transparent border-none placeholder-gray-500 outline-none text-base text-white p-4"
           placeholder="Search"
           type="search"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          onChange={(e) => {
+            let searchValue = e.target.value.toLocaleLowerCase();
+            setSearch(searchValue);
+          }}
         />
       </div>
     </form>

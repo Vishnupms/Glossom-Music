@@ -1,11 +1,11 @@
 import axios from 'axios';
   //............ARTIST.............
-const AdminInstance = axios.create({
-    baseURL:"https:glossom.onrender.com/api"
-  })
 // const AdminInstance = axios.create({
-//     baseURL:"http://localhost:8000/api"
+//     baseURL:"https:glossom.onrender.com/api"
 //   })
+const AdminInstance = axios.create({
+    baseURL:"http://localhost:8000/api"
+  })
   
   
   //ADD INTERCEPTOR FOR ARTIST

@@ -12,7 +12,7 @@ function ArtistCharts() {
       const invoke = async () => {
         const result = await getChartDet(id);
         setData(result.data);
-        console.log(result,"chartsss")
+
       };
       invoke();
     }, []);

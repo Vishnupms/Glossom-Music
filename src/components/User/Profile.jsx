@@ -28,7 +28,6 @@ function Profile() {
       await Instance.post(`/user/updateProfile/${id}`, {
         editedName,
       }).then((response) => {
-        console.log(response?.data?.profile?.username);
 
         if (response?.data?.success) {
           toast.success(response?.data?.message);
@@ -43,9 +42,7 @@ function Profile() {
     async function invoke() {
       const result = await getProfile(id);
       if (!result.success) {
-         console.log(result)
       } else {
-        console.log(result.data.imgUrl,"resuk")
        setPhoto(result.data.imgUrl)
        dispatch(
         userActions.setUserName({name: result.data.username}),
@@ -67,7 +64,6 @@ function Profile() {
     if (file == null) {
       return;
     }
-    console.log(file, "kjbsjb");
     const imageref = ref(storage, `/profile/${file.name}`);
     const uploadtask = uploadBytesResumable(imageref, file);
     uploadtask.on(
@@ -76,19 +72,15 @@ function Profile() {
         const progress = Math.round(
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100
         );
-        console.log(progress);
       },
       (error) => {
-        console.log(error);
       },
       () => {
         getDownloadURL(uploadtask.snapshot.ref).then((downloadURL) => {
-          console.log(downloadURL);
           setPhoto(downloadURL);
           Instance.post(`/user/updateProfile/${id}`, {
             imageUrl: downloadURL, 
           }).then((response) => {
-            console.log(response?.data?.profile,"nkjsbch");
           })
     
           dispatch(

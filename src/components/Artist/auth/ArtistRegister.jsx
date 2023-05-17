@@ -1,5 +1,5 @@
 import React, { useState} from 'react';
-import {useNavigate} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import { toast, Toaster } from "react-hot-toast";
 import './Login.css';
 import { useFormik } from 'formik';
@@ -11,7 +11,6 @@ function ArtistRegister() {
   const Formik =useFormik({
     initialValues:{
       username:"",
-      nickname:"",
       email:"",
       phone:"",
       password:"",
@@ -23,7 +22,7 @@ function ArtistRegister() {
     onSubmit: async (values) => {
       
       toast.loading("We are processing your request...");
-      console.log(values)
+
       setTimeout(function () {
         toast.dismiss();
       }, 3000)
@@ -34,7 +33,6 @@ function ArtistRegister() {
         navigate('/artist/login',{replace:true})
       })
       .catch((error) => {
-        console.log(error);
         toast.error(error.response.data.error)
     });
   },
@@ -46,12 +44,11 @@ function ArtistRegister() {
        <Toaster position="top-center"></Toaster>
       <div className='flex flex-col items-center justify-center bg-black/60 h-screen'>
       <h1 className =" text-white text-3xl mb-4 font-medium">
-            Create an account
+            Create an Artist account
           </h1>
         <div className="container h-[30rem] w-96 bg-white bg-opacity-10 rounded-2xl shadow-2xl border-white border border-r-0 border-b-0 border-opacity-25 backdrop-filter backdrop-blur-sm">
           <form action='#' className='h-full flex flex-col justify-evenly items-center' onSubmit={Formik.handleSubmit} >
             <input type="text"  {...Formik.getFieldProps("username")} placeholder='Full Name' className='font-poppins input-text' />
-            <input type="text"  {...Formik.getFieldProps("nickname")} placeholder='Nick Name' className='font-poppins input-text' />
             <input type="email" {...Formik.getFieldProps("email")} placeholder='Email' className='font-poppins input-text'  />
             <input type="tel" {...Formik.getFieldProps("phone")} placeholder='Phone' className='font-poppins input-text' />
             <input type="password" {...Formik.getFieldProps("password")} placeholder='Password' className='font-poppins input-text' />
@@ -60,7 +57,7 @@ function ArtistRegister() {
 
 
             <input type="submit" className='font-poppins cursor-pointer px-3 py-1 rounded-full bg-white bg-opacity-50 hover:bg-white' />
-            <a href='/login' className='font-poppins text-white/60'>Already have an account ?</a>
+            <Link to={'/artist/login'} className='font-poppins text-white/60'>Already have an account ?</Link>
           </form>
         </div>
       </div>

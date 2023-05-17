@@ -8,6 +8,7 @@ import AddTrack from '../components/Artist/AddTrack';
 import CreateAlbum from '../components/Artist/CreateAlbum';
 import MySongs from '../components/Artist/MySongs';
 import ProtectedArtist from '../../ProtectedArtist';
+import NotFoundPage from '../components/Landing Page/NotFound';
 
 function ArtistRoutes() {
   return (
@@ -19,6 +20,7 @@ function ArtistRoutes() {
         <Route path='/profile' element={<ProtectedArtist><ArtistProfile /></ProtectedArtist>} />
         <Route path='/create-album' element={<ProtectedArtist><CreateAlbum /></ProtectedArtist>} />
         <Route path='/my-songs' element={<ProtectedArtist><MySongs /></ProtectedArtist>} />
+        <Route path='*' element={<NotFoundPage/>} />
 
 
 

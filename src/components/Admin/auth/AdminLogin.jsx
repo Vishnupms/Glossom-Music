@@ -20,16 +20,16 @@ function AdminLogin() {
     validateOnBlur: false,
     validateOnChange: false,
     onSubmit: async (values) => {
-      console.log(values,"happy ending");
+
       await AdminInstance.post("/admin/login", { values })
         .then((res) => {
           let { token } = res.data;
-          console.log(res.data)
+     
           localStorage.setItem("admintoken", token);
           navigate("/admin", { replace: true });
         })
         .catch((error) => {
-          console.log(error);
+   
           toast.error(error.response.data.error);
         });
 
