@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import AdminLayout from '../../pages/Admin/AdminLayout';
 import AdminCard from './AdminCard';
-import { getAllCount, getUserChart } from '../../Api/AdminApi';
+import { getAllCount, getArtistChart, getUserChart } from '../../Api/AdminApi';
 import UserCharts from './Charts';
 import Charts from './Charts';
+import ArtistCharts from './ArtistCharts';
 
 
 function AdminDash() {
@@ -11,12 +12,28 @@ function AdminDash() {
   const [user, setUser] = useState(0);
   const [artist, setArtist] = useState(0);
   const [data, setData] = useState([]);
+  const [artistData, setArtistData] = useState([]);
+
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const result = await getUserChart();
         setData(result.data);
+      } catch (error) {
+   
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result = await getArtistChart();
+        console.log(result)
+        setArtistData(result.data);
       } catch (error) {
    
       }
@@ -78,11 +95,20 @@ function AdminDash() {
     </div>
  
 <div className=''>
-  <h3 className='text-white text-center text-xl'>Charts</h3>
+  <h3 className='text-white text-center text-xl'><u>User Charts</u></h3>
   <div className='mt-5'>
 
 <Charts
 data={data}
+/>
+</div>
+</div>
+<div className='mt-5'>
+<h3 className='text-white text-center text-xl'><u>Artist Charts</u></h3>
+  <div className='mt-5'>
+
+<ArtistCharts
+data={artistData}
 />
 </div>
 </div>

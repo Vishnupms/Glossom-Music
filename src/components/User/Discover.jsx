@@ -101,7 +101,7 @@ useEffect(()=>{
 
     
     <div className=' flex flex-col'>
-     <div className="flex pb-2 bg-transparent dark:bg-gray-900">
+     <div className="flex pb-2 bg-transparent">
      <label htmlFor="search-field" className="sr-only">
         Search all files
       </label>

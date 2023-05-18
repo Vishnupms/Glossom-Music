@@ -36,7 +36,7 @@ import NotFoundPage from '../components/Landing Page/NotFound';
           <Route path='/create-playlist' element={<ProtectedUser><CreatePlaylist /></ProtectedUser>} />
           <Route path='/get-playlist' element={<ProtectedUser><GetPlaylist /></ProtectedUser>} />
           <Route path='/my-favourites' element={<ProtectedUser><Favourites /></ProtectedUser>} />
-          <Route path='*' element={<NotFoundPage/>} />
+          <Route path='/*' element={<NotFoundPage/>} />
 
           
 

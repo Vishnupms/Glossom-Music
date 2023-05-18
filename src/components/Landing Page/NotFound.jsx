@@ -19,12 +19,12 @@ const NotFoundPage = () => {
         <p className="text-lg mb-8">
           We're fairly sure that page used to be here, but seems to have gone missing. We do apologize on its behalf.
         </p>
-        <Link
-          to={window.history.back()}
+        <button
+          onClick={()=>window.history.back()}
           className="inline-block uppercase bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600"
         >
           Home
-        </Link>
+        </button>
       </div>
     </div>
   );

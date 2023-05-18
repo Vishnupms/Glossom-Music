@@ -112,4 +112,17 @@ export const verifyArtist = async (id) => {
       return error.response.data.error;
     }
   };
+
+  export const getArtistChart = async () => {
+    try {
+      const response = await AdminInstance.get(`/admin/artist-chart`);
+      const { data } = response;
+      if (data) {
+        return data;
+      }
+    } catch (error) {
+      return error.response.data.error;
+    }
+  };
+ 
  

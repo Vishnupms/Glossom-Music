@@ -19,7 +19,7 @@ const Sidebar = () => {
     <>
     <div className=" md:flex hidden gap-6"> 
       <div
-        className={`bg-[#1f0733] min-h-screen ${
+        className={`bg-[#060627] min-h-screen ${
           open ? "w-[13rem]" : "w-16"
         } duration-500 text-gray-100 px-2`}
       >

@@ -6,7 +6,7 @@ const menus = [
     { name: 'Dashboard', to: '/admin', icon: HiOutlineHome },
     { name: 'Users', to: '/admin/users', icon:HiOutlineUserGroup  },
     { name: 'Artist', to: '/admin/artist', icon:HiOutlineUser  },
-    { name: 'Genre', to: '/get-genre', icon: HiOutlineHashtag },
+    // { name: 'Genre', to: '/get-genre', icon: HiOutlineHashtag },
   ];
 
 function AdminSidebar() {
